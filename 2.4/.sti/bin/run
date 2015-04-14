@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# For SCL enablement
+source /opt/openshift/.bashrc
+
+set -eu
+
+set -x
+
+: ${HTTPD_SERVER_ADMIN:=apache@localhost}
+
+# TODO: envsubst
+
+exec httpd -DFOREGROUND -d /opt/openshift/httpd/
+
+# NOTREACHED
+#
+# if [ "$1" = "httpd" ]; then
+# 	shift
+# 	set -- httpd -DFOREGROUND -d /opt/openshift/httpd/ "$@"
+# fi
+#
+# exec "$@"
