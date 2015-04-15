@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Default STI usage script for the httpd-2.4 image.
+#
+
+source /etc/os-release
+
+cat <<EOF
+This is a STI httpd-2.4 ${PRETTY_NAME} base image:
+To use it, install STI: https://github.com/openshift/source-to-image
+
+Sample invocation:
+
+sti build https://github.com/openshift/sti-httpd.git --contextDir=2.4/test/html-test-app/ openshift/httpd-24-${ID}7 httpd-sample-app
+
+
+You can then run the resulting image via:
+docker run -p 8080:8080 httpd-sample-app
+EOF

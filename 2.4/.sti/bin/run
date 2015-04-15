@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source /opt/openshift/httpd_util.sh
+
+set -e
+
+echo "---> Adding additional Apache configuration for static HTML pages"
+cp /opt/openshift/00-static.conf /opt/openshift/httpd/conf.d/
+
+configure_httpd
+exec_httpd
