@@ -1,11 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash
 
-export HTTPD_SERVER_ADMIN=${HTTPD_SERVER_ADMIN:-default@localhost}
-
-echo "---> Configuring Apache"
-for template in $(find /opt/openshift/httpd/ -name '*.template'); do
-  envsubst < ${template} > ${template%.template}
-done
+set -e
 
 echo "---> Installing application source"
 cp -Rf /tmp/src/* /opt/openshift/www/html/

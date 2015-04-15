@@ -1,8 +1,11 @@
 #!/bin/bash
 
-# For SCL enablement
-source /opt/openshift/.bashrc
+source /opt/openshift/httpd_util.sh
 
-set -eux
+set -e
 
-exec httpd -DFOREGROUND -d /opt/openshift/httpd/
+echo "---> Adding additional Apache configuration for static HTML pages"
+cp /opt/openshift/00-static.conf /opt/openshift/httpd/conf.d/
+
+configure_httpd
+exec_httpd
